@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Disease</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    <script src="https://unpkg.com/@ionic/core@latest/dist/ionic.js"></script>
+    <link href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Muli" rel="stylesheet"> 
+            
+
+</head>
+<body>
+  
+    <!-- As a heading -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      
+      <div class="mx-auto order-0">
+          <a class="navbar-brand mx-auto" style="font-family: 'Fredoka One', cursive;;font-size: 35px;" href="#">Disease Detection</a>
+          
+      </div>
+      
+  </nav>
+  <br>
+  <br>
+  {% if a=="Pneumonia" %}
+  <div class="card " style="margin: 0 30px">
+    
+    <div class="card-body mx-auto order-0">
+      <h2 class="card-title mx-auto order-0" style="font-family: 'Muli', sans-serif;font-size: 35px;" >{{ a }}</h2>
+      
+    </div>
+  </div>
+  {% endif %}
+  <br>
+  <br>
+  {% if b=="Tuberclosis" %}
+  <div class="card " style="margin: 0 30px">
+    
+    <div class="card-body mx-auto order-0">
+      <h2 class="card-title mx-auto order-0" style="font-family: 'Muli', sans-serif;font-size: 35px;" >{{ b }}</h2>
+      
+    </div>
+  </div>
+  {% endif %}
+  <br>
+  <br>
+  {% if c=="Infiltration" %}
+  <div class="card " style="margin: 0 30px">
+    
+    <div class="card-body mx-auto order-0">
+      <h2 class="card-title mx-auto order-0" style="font-family: 'Muli', sans-serif;font-size: 35px;" >{{ c }}</h2>
+      
+    </div>
+  </div>
+  {% endif %}
+  <br>
+  <br>
+  {% if n=="none" %}
+  <div class="card " style="margin: 0 30px">
+    
+    <div class="card-body mx-auto order-0">
+      <h2 class="card-title mx-auto order-0" style="font-family: 'Muli', sans-serif;font-size: 35px;font-weight: bold" >You're Safe! :)</h2>
+      <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0012/8883/brand.gif?itok=G1VubHtU"/>
+    </div>
+  </div>
+  {% endif %}
+  
+                       
+                        
+
+
+</body>
+</html>

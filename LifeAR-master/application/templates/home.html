@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DISEASE DETECTION</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDtpqE2Ne-htEyMBxObFj_H0Y6XsF9LInk",
+    authDomain: "gauri-ab979.firebaseapp.com",
+    databaseURL: "https://gauri-ab979.firebaseio.com",
+    projectId: "gauri-ab979",
+    storageBucket: "gauri-ab979.appspot.com",
+    messagingSenderId: "769032401169"
+  };
+  firebase.initializeApp(config);
+
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      var lolz = $('#lolz');
+      var kk = $('#kk');
+      kk.click(function() {
+          console.log(lolz.val())
+          //var firebase = firebase.database().ref();
+          firebase.database().ref('/').set({
+        result: lolz.val(),
+      });
+
+// Push our first recommendation to the end of the list and assign it a
+// unique ID automatically.
+    res.push({
+    "result":lolz.val(),
+});
+      });
+  });
+</script>
+<style>
+body{
+  background: white;  /* fallback for old browsers */
+font-family: 'Black Han Sans', sans-serif;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
+
+
+</style>
+</head>
+<body >
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" style="font-size: 35px;" href="#">Disease Detection</a>
+            
+        </div>
+        
+    </nav>
+  
+
+              <div id="filesubmit" class="content">
+                  <input type="text" name="enter" class="enter" style="margin-left: 18%;margin-top: 10%" value="" id="lolz"/>
+                  <input type="button" value="search" id="kk" style="margin-left: 20px;" />
+                <input placeholder="video" type="file" style="font-size:20px;margin-top:15%;margin-left: 15%" class="file-select"
+                  accept="image/*" />
+                <button type="button" class="file-submit btn btn-primary" style="font-size:40px;margin-top:20%;margin-left:30%;" >Upload</button>
+                <!-- <button type="button" class="btn btn-primary" style="font-size:40px;margin-top:20%;margin-left:30%;" action = "http://localhost:5000/uploader" method = "POST" >Predict</button> -->
+                <h2 id="result" class='borderBlink' style="margin-left: 33%;margin-top:10%;color:black;border:1"></h2>
+                <form action="/forward/" method="post">
+                	<button name="forwardBtn" type="submit" class="file-submit btn btn-success" style="font-size:40px;margin-top:10%;margin-left:30%;">Predict</button>
+                </form>
+                
+              </div>
+                       
+                        
+
+<script>
+  
+        const storageService = firebase.storage();
+          const storageRef = storageService.ref();
+          document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
+          document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+         
+          let selectedFile;
+          function handleFileUploadChange(e) {
+            selectedFile = e.target.files[0];
+          }
+         
+          function handleFileUploadSubmit(e) {
+            const uploadTask = storageRef.child(`images/${"2.jpeg"}`).put(selectedFile);
+            //create a child directory called images, and place the file inside this directory
+            uploadTask.on('state_changed', (snapshot) => {
+              // Observe state change events such as progress, pause, and resume
+            }, (error) => {
+              // Handle unsuccessful uploads
+              console.log(error);
+            }, () => {
+              // Do something once upload is complete
+              console.log('success');
+            });
+          }
+
+          var ref = firebase.database().ref();
+
+          ref.on("value", function (snapshot) {
+            let snap = snapshot.val();
+
+            console.log(snap['result']);
+            document.getElementById("result").innerHTML = null;
+          }, function (error) {
+            console.log("Error: " + error.code);
+          });
+        
+</script>
+</body>
+</html>
